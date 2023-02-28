@@ -10,11 +10,20 @@ class Square{
         if(!checkValidArgument(numOrBomb)){
             throw new Error("Invalid argument!");
         }
+        this.#isOpen = false;
         this.#numOrBomb = numOrBomb;
     }
 
-    get numOrBomb(){
-        return this.#numOrBomb;
+    get isOpen(){
+        return this.#isOpen;
+    }
+
+    open(){
+        this.#isOpen = true;
+    }
+
+    getState(){
+        return (!this.#isOpen && "*") || (this.#numOrBomb === 0 && " ") || this.#numOrBomb;
     }
 }
 
