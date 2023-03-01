@@ -31,8 +31,6 @@ class Field{
         while(bombIndexSet.size < bombNum){
             bombIndexSet.add(Math.floor(Math.random() * squaresNum));
         }
-        console.log(...bombIndexSet);
-
         const calcNumOrBomb = i => {
             if(bombIndexSet.has(i)){
                 return 'b';
@@ -45,12 +43,20 @@ class Field{
         }
     }
 
+    #open = (index) =>{
+        if(this.#squares[index].isOpen) return;
+
+        this.#squares[index].open();
+        if(this.#squares[index].getState() === " "){
+            this.#getSurroundIndexes(index).forEach(index => this.#open(index));
+        }
+    }
+
     open(x, y){
         if(x < 0 || x >= this.#width || y < 0 || y >= this.#height){
             throw new Error("arguments is not in range");
         }
-        const index = x + y * this.#width;
-        this.#squares[index].open();
+        this.#open(x + y * this.#width);
     }
 
     getState(x, y){

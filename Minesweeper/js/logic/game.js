@@ -18,4 +18,4 @@ field.open(3,2);
 print();
 field.open(9,9);
 print();
-field.open(5);
+//field.open(5);
