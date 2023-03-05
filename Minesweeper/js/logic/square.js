@@ -18,6 +18,10 @@ class Square{
         return this.#isOpen;
     }
 
+    isBombSquare(){
+        return this.#numOrBomb === 'b';
+    }
+
     open(){
         this.#isOpen = true;
     }

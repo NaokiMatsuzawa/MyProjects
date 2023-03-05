@@ -43,6 +43,12 @@ class Field{
         }
     }
 
+    #checkRange = (x, y) =>{
+        if(x < 0 || x >= this.#width || y < 0 || y >= this.#height){
+            throw new Error("arguments is not in range");
+        }
+    }
+
     #open = (index) =>{
         if(this.#squares[index].isOpen) return;
 
@@ -53,14 +59,21 @@ class Field{
     }
 
     open(x, y){
-        if(x < 0 || x >= this.#width || y < 0 || y >= this.#height){
-            throw new Error("arguments is not in range");
-        }
+        this.#checkRange(x, y);
         this.#open(x + y * this.#width);
     }
 
     getState(x, y){
+        this.#checkRange(x, y);
         return this.#squares[x + y * this.#width].getState();
+    }
+
+    isClear(){
+        return this.#squares.every(square => square.isOpen !== square.isBombSquare());
+    }
+
+    isGameOver(){
+        return this.#squares.some(square => square.isOpen && square.isBombSquare());
     }
 
     get width(){
