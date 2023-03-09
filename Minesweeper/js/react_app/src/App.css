@@ -3,12 +3,17 @@
   width : 32px;
   height: 32px;
   padding: 0;
+
+  color: #999;
   text-align: center;
+
+  border: solid 1px #999;
 }
 
+.SquareRow{
+  display:flex;
+}
 
-td{
-  border: solid 1px;
-  margin : 0;
-  padding : 0;
+.Board{
+  padding : 10px 10px;
 }
