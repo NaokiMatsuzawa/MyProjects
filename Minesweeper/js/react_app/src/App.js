@@ -10,12 +10,12 @@ function Square(){
   );
 }
 
-function Field(){
-  const xArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const yArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+function Board({width, height}){
+  const xArray = new Array(width).fill("_");
+  const yArray = new Array(height).fill("_");
   return(
     <table>
-      {yArray.map(_ => <tr>{xArray.map(_ => <td><Square /></td>)}</tr> )}
+      {yArray.map( (_, y) => <tr>{xArray.map( (_, x) => <td><Square key={y*width+x} /></td>)}</tr> )}
     </table>
   )
 }
@@ -23,7 +23,7 @@ function Field(){
 function App() {
   return (
     <div className="App">
-      <Field />
+      <Board width={12} height={10} />
     </div>
   );
 }
