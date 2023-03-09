@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import './App.css';
-
+import Field from './logic/field'
 
 function Square({x, y}){
   const [count, setCount] = useState(0);
@@ -32,6 +32,7 @@ function Board({width, height}){
 }
 
 function App() {
+  const game = new Field(10, 10, 10);
   return (
     <div className="Board">
       <Board width={13} height={10} />

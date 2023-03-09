@@ -1,4 +1,4 @@
-import Field from './logic/field.js'
+import Field from './field.js'
 import * as readline from 'readline'
 
 process.stdin.resume();
