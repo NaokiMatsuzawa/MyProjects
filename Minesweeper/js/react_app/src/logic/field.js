@@ -68,6 +68,10 @@ class Field{
         return this.#squares[x + y * this.#width].getState();
     }
 
+    getStates(){
+        return this.#squares.map((square, i) => square.getState());
+    }
+
     isClear(){
         return this.#squares.every(square => square.isOpen !== square.isBombSquare());
     }
